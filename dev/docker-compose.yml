@@ -15,7 +15,6 @@ services:
     build: 
       context: PassiveDNS
       dockerfile: extras/docker/dev/Dockerfile
-
     environment :
       - ARANGO_USERNAME=root
       - ARANGO_PASSWORD=root
