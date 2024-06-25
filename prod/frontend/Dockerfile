@@ -10,8 +10,6 @@ WORKDIR /app/frontend
 RUN npm install
 RUN npm run build
 
-FROM nginx as production-stage
-
-FROM nginx:latest AS frontend
+FROM nginx:latest AS front
 COPY --from=frontend-builder /app/frontend/dist /www
 EXPOSE 80

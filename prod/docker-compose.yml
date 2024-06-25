@@ -10,7 +10,9 @@ services:
     environment:
       - ARANGO_ROOT_PASSWORD=
   frontend:
-    image: front:test
+    build: 
+      context: ../dev/PassiveDNS/front
+      dockerfile: ./docker/prod/Dockerfile
     container_name: frontend
     ports:
       - 80:80
