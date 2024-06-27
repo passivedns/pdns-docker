@@ -50,4 +50,4 @@ services:
       - /passivedns-data:/data
 networks:
   default:
-    name: yeti_network
+    name: passivedns-network
