@@ -2,15 +2,14 @@ version: "3.3"
 services:
   db:
     build: 
-      context: PassiveDNS/db
+      context: ./PassiveDNS/db
       dockerfile: ./docker/dev/Dockerfile
     environment:
       - ARANGO_ROOT_PASSWORD=root
     volumes:
-      - ./PassiveDNS/db/volume:/var/lib/arangodb3
+      - ./db/volume:/var/lib/arangodb3
     ports:
       - "8529:8529"
-
   api:
     build: 
       context: ./PassiveDNS
@@ -53,14 +52,14 @@ services:
   scheduler:
     build:
       context: PassiveDNS/scheduler
-      dockerfile: ./docker/Dockerfile
+      dockerfile: ./docker/dev/Dockerfile
     environment:
       - LAUNCH_HOUR=8
       - LAUNCH_MINUTE=0
       - DAYS_FREQUENCY=1
       - API_HOST=http://api:8080
-      - API_USERNAME=sched_1
-      - API_PASSWORD=sched_1
+      - SCHEDULER_USERNAME=sched_1
+      - SCHEDULER_PASSWORD=sched_1
       - THREAD_COUNT=5
     entrypoint:
       - /docker-entrypoint.sh
