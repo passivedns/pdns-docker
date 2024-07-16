@@ -6,7 +6,7 @@ services:
     ports:
       - "8529:8529"
     volumes:
-      - /passivedns-data:/var/lib/arangodb3
+      - /passivedns_arangodb:/var/lib/arangodb3
     environment:
       - ARANGO_ROOT_PASSWORD=
   frontend:
@@ -47,7 +47,7 @@ services:
     ports:
       - "6379:6379"
     volumes:
-      - /passivedns-data:/data
+      - /passivedns_redis_data:/data
 networks:
   default:
     name: passivedns-network
